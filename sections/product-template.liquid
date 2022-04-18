@@ -139,6 +139,7 @@
 
           <div class="product__price">
             {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
+            <span class="savings">You save: {{ product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max }}%</span>
           </div>
 
           {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
