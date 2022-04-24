@@ -9685,3 +9685,10 @@ function removeImageLoadingAnimation(image) {
     imageWrapper.removeAttribute('data-image-loading-animation');
   }
 }
+
+const currencySelector = document.querySelector('#currency_form select');
+const currencyForm = document.querySelector('#currency_form');
+
+currencySelector.addEventListener('input', () => {
+  currencyForm.submit();
+});
