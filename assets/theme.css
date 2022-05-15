@@ -7008,3 +7008,51 @@ hr {
   align-items: center;
   justify-content: space-around;
 }
+
+.faq {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq .faq_tab-toggle {
+  display: none;
+}
+
+.faq .faq_tab-label1 {
+  background-color: rgb(48, 115, 202);
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.faq .faq_tab-label1:hover {
+  background-color: rgb(48, 89, 202);
+}
+
+.faq .faq_tab-toggle:checked~.faq_tab-label1 {
+  background-color: rgb(48, 89, 202);
+}
+
+.faq .faq_tab-label1::after {
+  content: '\276f';
+  transition: all .4s;
+}
+
+.faq .faq_tab-toggle:checked~.faq_tab-label1::after {
+  transform: rotate(90deg);
+}
+
+.faq .faq_content {
+  background-color: #ffffff;
+  max-height: 0;
+  overflow: hidden;
+  transition: all .4s;
+  padding: 0 1em;
+}
+
+.faq .faq_tab-toggle:checked~.faq_content {
+  max-height: 100vh;
+  padding: 1em;
+}
