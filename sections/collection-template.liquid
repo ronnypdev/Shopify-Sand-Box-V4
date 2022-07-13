@@ -49,7 +49,11 @@
       {% endif %}
       {% if collection.description != blank %}
         <div class="rte collection-description page-width">
-          {{ collection.description }}
+          {% if collection.description contains '<!-- SPLIT -->' %}
+            {{ collection.description | split: '<!-- SPLIT -->' | first }}
+          {% else %}
+            {{ collection.description }}
+          {% endif %}
         </div>
       {% endif %}
     {% else %}
@@ -61,7 +65,11 @@
           </h1>
           {% if collection.description != blank %}
             <div class="rte">
-              {{ collection.description }}
+              {% if collection.description contains '<!-- SPLIT -->' %}
+                {{ collection.description | split: '<!-- SPLIT -->' | first }}
+              {% else %}
+                {{ collection.description }}
+              {% endif %}
             </div>
           {% endif %}
           {% if is_filter_by_available == false and section.settings.sort_enable == false %}
@@ -229,6 +237,11 @@
       {% include 'pagination', paginate: paginate %}
     {%- endif -%}
   </div>
+  {% if collection.description contains '<!-- SPLIT -->' %}
+    <div class="rte collection-description page-width">
+      {{ collection.description | split: '<!-- SPLIT -->' | last }}
+    </div>
+  {% endif %}
 </div>
 
 {% endpaginate %}
